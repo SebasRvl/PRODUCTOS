@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .product-detail {
+            display: flex;
+            justify-content: space-between;
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product-image {
+            flex: 1;
+            max-width: 500px;
+        }
+        .product-image img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .product-info {
+            flex: 2;
+            margin-left: 20px;
+        }
+        .product-info h1 {
+            margin: 0 0 10px;
+            font-size: 2em;
+        }
+        .product-info p {
+            margin: 10px 0;
+        }
+        .price {
+            color: #b12704;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="product-detail">
+            <div class="product-image">
+                <img src="https://tafmx.vtexassets.com/arquivos/ids/404100/DD1399-105-1.jpg?v=638234823203430000" alt="Nombre del Producto">
+            </div>
+            <div class="product-info">
+                <h1>TENIS NIKE DUNK HI RETRO</h1>
+                <p>El ícono del básquetbol de los 80, que se creó para la cancha pero llegó a las calles, vuelve con revestimientos brillantes y los colores universitarios del original. El Nike Dunk High Retro, con su diseño clásico inspirado en el básquetbol, trae la década de los 80 de vuelta a las calles, mientras su cuello acolchado y de corte high aporta un look clásico y muy cómodo.</p>
+                <p class="price">$2,800</p>
+                <stripe-buy-button
+                  buy-button-id="buy_btn_1PdDBFFxrzxJ5nUwLOwDYoh3"
+                  publishable-key="pk_test_51PdCkmFxrzxJ5nUwVMQVOzWMjCdt59LjlN68jNf6YCf6jyeGEaqfihFLrz5WXE7BoXfw1oGsuyn3Dl3su5gogajo00cb2sR8SN"
+                >
+                </stripe-buy-button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluyendo la biblioteca de Stripe -->
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <script>
+        document.addEventListener('stripe-button-click', function(event) {
+            // Aquí puedes manejar la lógica de redirección
+            event.preventDefault();
+            // Lógica para iniciar la compra
+        });
+
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'stripe:checkout-complete') {
+                window.location.href = "productos.html"; // Cambia "index.html" por la URL de tu página de inicio
+            }
+        });
+    </script>
+</body>
+</html>
